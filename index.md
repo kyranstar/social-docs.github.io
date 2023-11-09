@@ -34,6 +34,7 @@ OpenSocial's mission is to empower developers to rival social media companies, m
 Our social media algorithms are built up of lego building blocks called Components, each of which is an API hosted by someone. Some examples might include a database of Farcaster posts, a web scraper, or a ML ranking model. These components can be created by anyone, as long as they implement the Component REST API. Once created, every component gets published to the smart contract registry to allow anyone to use it.
 
 Then, using our custom DSL for defining social platforms, anybody can design a social network using any of the available components. 
+![MiniSocialApp (1)](https://github.com/kyranstar/social-docs.github.io/assets/5855296/cda8bd0a-7b6f-4c82-9a78-5913ed36d8e3)
 
 **Examples**
 
