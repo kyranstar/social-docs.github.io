@@ -3,7 +3,7 @@ title: Home
 layout: home
 ---
 
-**OpenSocial**
+# OpenSocial 
 
 OpenSocial is a permissionless and composable app store for social networks - personalized communities, unique algorithms, and data from any corner of the internet.
 
@@ -27,14 +27,17 @@ OpenSocial's mission is to empower developers to rival social media companies, m
 
 **How does it work?**
 
-Our social media algorithms are built up of lego building blocks called Components, each of which is an API hosted by someone. Some examples might include a database indexing Farcaster posts, a web scraper, or a ML ranking model. These components can be created by anyone, as long as they implement the Component Rest API.
+Our social media algorithms are built up of lego building blocks called Components, each of which is an API hosted by someone. Some examples might include a database indexing Farcaster posts, a web scraper, or a ML ranking model. These components can be created by anyone, as long as they implement the Component Rest API. Once created, every component gets published to the smart contract registry to allow anyone to use it.
 
----
-title: Component API
-layout: component
----
+Then, using our custom DSL for defining social platforms, anybody can design a social network using any of the available components. 
 
-## Component API
+## Payment Model
+
+Eventually, all contributors who write components or algorithms will get paid for their usage automatically, potentially through microtransactions.
+
+## Algorithm DSL (TODO)
+
+## Component API (TODO)
 
 #### Get Schema
 
