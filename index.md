@@ -11,13 +11,17 @@ OpenSocial is a permissionless and composable app store for social networks - pe
 
 Social is broken. Centralized social media algorithms are becoming more and more damaging, inducing mass addiction, polarization, and engagement farming. There are a few main causes for this:
 
-1. Misaligned Incentives
+1. No Autonomy Over Your Digital Sphere
+
+In today's world, we have very little control over the content we see on the internet. While there are a few controls that let us modulate the flow of information such as disliking or muting, these often don't work and indirectly address the individual issues we have. Every person should be in complete control of the content that forms their digital sphere.
+
+2. Misaligned Incentives
 
 Social media platforms are funded by ads, meaning that the longer and more engaged you are on their platform, the more money they make. This feedback loop pushes them to optimize to make content more addictive. 
 
-2. The Social Event Horizon
+3. The Social Event Horizon
 
-Creating a social media platform is *really* hard, due to the "cold-start problem." This is when your network has no worth to join since it has no users, making it hard to grow when your network is small. This issue itself stifles innovation, since every new social network idea has to raise millions of dollars, which then makes the founders beholden to VCs.
+Creating a social media platform is *really* hard, due to the "cold-start problem." This is when your network has no worth to join since it has no users, making it hard to grow when your network is small. This issue itself stifles innovation, since every new social network idea has to raise millions of dollars to escape the event horizon, which then makes the founders beholden to VCs.
 
 Fortunately, something new has changed in the past few years with the rise of decentralized social media. Decentralized social media are effectively databases of social media content which are decentralized - meaning no single person or organization can censor the data, and the data is completely open and accessible. Since the data is accessible by anyone, this means that any type of application can be built composably on this data. This unlocks innovation, allowing a single developer to create a social media algorithm that rivals the status quo.
 
@@ -27,13 +31,22 @@ OpenSocial's mission is to empower developers to rival social media companies, m
 
 **How does it work?**
 
-Our social media algorithms are built up of lego building blocks called Components, each of which is an API hosted by someone. Some examples might include a database indexing Farcaster posts, a web scraper, or a ML ranking model. These components can be created by anyone, as long as they implement the Component Rest API. Once created, every component gets published to the smart contract registry to allow anyone to use it.
+Our social media algorithms are built up of lego building blocks called Components, each of which is an API hosted by someone. Some examples might include a database of Farcaster posts, a web scraper, or a ML ranking model. These components can be created by anyone, as long as they implement the Component REST API. Once created, every component gets published to the smart contract registry to allow anyone to use it.
 
 Then, using our custom DSL for defining social platforms, anybody can design a social network using any of the available components. 
 
+**Examples**
+
+1. Anna loves Farcaster, but everytime she goes on it past a certain time at night, she sees scary posts and can't sleep. So, she takes an out-of-the-box farcaster feed on OpenSocial, adds a rule that after 9pm the filter "only_fuzzy_cute_things" applies, and creates her new feed.
+
+**Future Featrues**
+1. Exclusive communities
+2. Groupchats
+3. Customizable frontends
+
 ## Payment Model
 
-Eventually, all contributors who write components or algorithms will get paid for their usage automatically, potentially through microtransactions.
+Eventually, all contributors who write components or algorithms will get paid for their usage automatically, potentially through microtransactions. 
 
 ## Algorithm DSL (TODO)
 
@@ -42,7 +55,7 @@ Eventually, all contributors who write components or algorithms will get paid fo
 #### Get Schema
 
 <details>
- <summary><code>GET</code> <code><b>/</b></code> <code>(overwrites all in-memory stub and/or proxy-config)</code></summary>
+ <summary><code>GET</code> <code><b>/get_schema/</b></code> <code>(returns the component schema)</code></summary>
 
 ##### Parameters
 
@@ -55,7 +68,7 @@ Eventually, all contributors who write components or algorithms will get paid fo
 
 > | http code     | content-type                      | response                                                            |
 > |---------------|-----------------------------------|---------------------------------------------------------------------|
-> | `201`         | `text/plain;charset=UTF-8`        | `Configuration created successfully`                                |
+> | `200`         | `application/json`                | `{"code": "200", "body": {}}`                                |
 > | `400`         | `application/json`                | `{"code":"400","message":"Bad Request"}`                            |
 > | `405`         | `text/html;charset=utf-8`         | None                                                                |
 
@@ -70,20 +83,20 @@ Eventually, all contributors who write components or algorithms will get paid fo
 #### Compute
 
 <details>
- <summary><code>POST</code> <code><b>/</b></code> <code>(overwrites all in-memory stub and/or proxy-config)</code></summary>
+ <summary><code>POST</code> <code><b>/compute/</b></code> <code>(overwrites all in-memory stub and/or proxy-config)</code></summary>
 
 ##### Parameters
 
 > | name      |  type     | data type               | description                                                           |
 > |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
-> | None      |  required | object (JSON or YAML)   | N/A  |
+> | input      |  required | object (JSON or YAML)   | input, following the schema  |
 
 
 ##### Responses
 
 > | http code     | content-type                      | response                                                            |
 > |---------------|-----------------------------------|---------------------------------------------------------------------|
-> | `201`         | `text/plain;charset=UTF-8`        | `Configuration created successfully`                                |
+> | `200`         | `application/json`                | `Configuration created successfully`                                |
 > | `400`         | `application/json`                | `{"code":"400","message":"Bad Request"}`                            |
 > | `405`         | `text/html;charset=utf-8`         | None                                                                |
 
