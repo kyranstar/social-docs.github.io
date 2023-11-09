@@ -3,25 +3,94 @@ title: Home
 layout: home
 ---
 
-This is a *bare-minimum* template to create a Jekyll site that uses the [Just the Docs] theme. You can easily set the created site to be published on [GitHub Pages] – the [README] file explains how to do that, along with other details.
+**OpenSocial**
 
-If [Jekyll] is installed on your computer, you can also build and preview the created site *locally*. This lets you test changes before committing them, and avoids waiting for GitHub Pages.[^1] And you will be able to deploy your local build to a different platform than GitHub Pages.
+OpenSocial is a permissionless and composable app store for social networks - personalized communities, unique algorithms, and data from any corner of the internet.
 
-More specifically, the created site:
+**Why do we need this?**
 
-- uses a gem-based approach, i.e. uses a `Gemfile` and loads the `just-the-docs` gem
-- uses the [GitHub Pages / Actions workflow] to build and publish the site on GitHub Pages
+Social is broken. Centralized social media algorithms are becoming more and more damaging, inducing mass addiction, polarization, and engagement farming. There are a few main causes for this:
 
-Other than that, you're free to customize sites that you create with this template, however you like. You can easily change the versions of `just-the-docs` and Jekyll it uses, as well as adding further plugins.
+1. Misaligned Incentives
 
-[Browse our documentation][Just the Docs] to learn more about how to use this theme.
+Social media platforms are funded by ads, meaning that the longer and more engaged you are on their platform, the more money they make. This feedback loop pushes them to optimize to make content more addictive. 
 
-To get started with creating a site, simply:
+2. The Social Event Horizon
 
-1. click "[use this template]" to create a GitHub repository
-2. go to Settings > Pages > Build and deployment > Source, and select GitHub Actions
+Creating a social media platform is *really* hard, due to the "cold-start problem." This is when your network has no worth to join since it has no users, making it hard to grow when your network is small. This issue itself stifles innovation, since every new social network idea has to raise millions of dollars, which then makes the founders beholden to VCs.
 
-If you want to maintain your docs in the `docs` directory of an existing project repo, see [Hosting your docs from an existing project repo](https://github.com/just-the-docs/just-the-docs-template/blob/main/README.md#hosting-your-docs-from-an-existing-project-repo) in the template README.
+Fortunately, something new has changed in the past few years with the rise of decentralized social media. Decentralized social media are effectively databases of social media content which are decentralized - meaning no single person or organization can censor the data, and the data is completely open and accessible. Since the data is accessible by anyone, this means that any type of application can be built composably on this data. This unlocks innovation, allowing a single developer to create a social media algorithm that rivals the status quo.
+
+However, decentralized social does not fully solve the problem. In the case of this single developer, it still might be difficult for them to reach users. Their friends and family might try it, but without significant ad-spend, it may be difficult to hit any significant amount of revenue, even if people love it.  If anybody can create an app on top of decentralized social, why can't we have an app store?
+
+OpenSocial's mission is to empower developers to rival social media companies, make the black box of "the algorithm" crystal clear, and to unlock radical change in the way algorithms form our digital world.
+
+**How does it work?**
+
+Our social media algorithms are built up of lego building blocks called Components, each of which is an API hosted by someone. Some examples might include a database indexing Farcaster posts, a web scraper, or a ML ranking model. These components can be created by anyone, as long as they implement the Component Rest API.
+
+---
+title: Component API
+layout: component
+---
+
+## Component API
+
+#### Get Schema
+
+<details>
+ <summary><code>GET</code> <code><b>/</b></code> <code>(overwrites all in-memory stub and/or proxy-config)</code></summary>
+
+##### Parameters
+
+> | name      |  type     | data type               | description                                                           |
+> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
+> | None      |  required | object (JSON or YAML)   | N/A  |
+
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `201`         | `text/plain;charset=UTF-8`        | `Configuration created successfully`                                |
+> | `400`         | `application/json`                | `{"code":"400","message":"Bad Request"}`                            |
+> | `405`         | `text/html;charset=utf-8`         | None                                                                |
+
+##### Example cURL
+
+> ```javascript
+>  curl -X POST -H "Content-Type: application/json" --data @post.json http://localhost:8889/
+> ```
+
+</details>
+
+#### Compute
+
+<details>
+ <summary><code>POST</code> <code><b>/</b></code> <code>(overwrites all in-memory stub and/or proxy-config)</code></summary>
+
+##### Parameters
+
+> | name      |  type     | data type               | description                                                           |
+> |-----------|-----------|-------------------------|-----------------------------------------------------------------------|
+> | None      |  required | object (JSON or YAML)   | N/A  |
+
+
+##### Responses
+
+> | http code     | content-type                      | response                                                            |
+> |---------------|-----------------------------------|---------------------------------------------------------------------|
+> | `201`         | `text/plain;charset=UTF-8`        | `Configuration created successfully`                                |
+> | `400`         | `application/json`                | `{"code":"400","message":"Bad Request"}`                            |
+> | `405`         | `text/html;charset=utf-8`         | None                                                                |
+
+##### Example cURL
+
+> ```javascript
+>  curl -X POST -H "Content-Type: application/json" --data @post.json http://localhost:8889/
+> ```
+
+</details>
 
 ----
 
